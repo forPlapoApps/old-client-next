@@ -1,9 +1,12 @@
-import { Button } from 'flowbite-react'
+import Layout from "@/core/layouts/Layout";
+import { Button } from "flowbite-react";
 
-export default function Home() {
+const Home = () => {
   return (
-
+    <Layout title="Welcome to forPlapoApps!">
       <Button>hogehoge</Button>
-
+    </Layout>
   )
-}
+};
+
+export default Home;
