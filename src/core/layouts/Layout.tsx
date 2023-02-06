@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Navbar from "../components/Navbar";
 
 type Props = { title?: string; children?: React.ReactNode };
 
@@ -10,9 +11,10 @@ const Layout = ({ title, children }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Navbar /> */}
-
-      <div style={{ minHeight: "800px" }}>{children}</div>
+      <main>
+        <Navbar />
+        <div style={{ minHeight: "800px" }}>{children}</div>
+      </main>
     </>
   );
 };
