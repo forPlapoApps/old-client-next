@@ -8,10 +8,9 @@ type InitialProps = {
 
 const ShowRoomPage: NextPage<InitialProps> = ({ room }) => {
   return (
-    <Layout title="">
+    <Layout title={room.name}>
       <div>
-        <p>RoomDetailPage</p>
-        <p>{room.name}</p>
+        <h2 className="text-2xl font-bold">Welcome to "{room.name}" !</h2>
       </div>
     </Layout>
   );
