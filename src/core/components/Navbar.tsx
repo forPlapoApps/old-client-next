@@ -18,19 +18,12 @@ const Navbar = () => {
         <FlowbiteNavbar.Toggle />
       </div>
       <FlowbiteNavbar.Collapse>
-        <FlowbiteNavbar.Link href="/FlowbiteNavbars" active={true}>
+        <Link href='/'>
           Home
-        </FlowbiteNavbar.Link>
-        <FlowbiteNavbar.Link href="/FlowbiteNavbars">About</FlowbiteNavbar.Link>
-        <FlowbiteNavbar.Link href="/FlowbiteNavbars">
-          Services
-        </FlowbiteNavbar.Link>
-        <FlowbiteNavbar.Link href="/FlowbiteNavbars">
-          Pricing
-        </FlowbiteNavbar.Link>
-        <FlowbiteNavbar.Link href="/FlowbiteNavbars">
-          Contact
-        </FlowbiteNavbar.Link>
+        </Link>
+        <Link href='/rooms'>
+          Rooms
+        </Link>
       </FlowbiteNavbar.Collapse>
     </FlowbiteNavbar>
   );
