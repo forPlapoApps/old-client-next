@@ -1,5 +1,6 @@
 import { Table } from "flowbite-react";
 import Link from "next/link";
+import dateFormat from "dateformat";
 
 type InitialProps = {
   rooms: Room[];
@@ -23,7 +24,7 @@ const RoomsTable = ({ rooms }: InitialProps) => {
               {room.name}
             </Table.Cell>
             <Table.Cell>{room.participantsLength}</Table.Cell>
-            <Table.Cell>{room.createdAt}</Table.Cell>
+            <Table.Cell>{dateFormat(room.createdAt, "fullDate")}</Table.Cell>
             <Table.Cell>
               <Link href={`/rooms/${room.id}`} className="title">
                 Visit
