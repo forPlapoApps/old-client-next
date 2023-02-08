@@ -1,6 +1,10 @@
 import { Table } from "flowbite-react";
 
-const RoomsTable = () => {
+type InitialProps = { 
+  rooms: Room[]
+}
+
+const RoomsTable = ({ rooms }: InitialProps) => {
   return (
     <Table>
       <Table.Head>
