@@ -4,10 +4,10 @@ import { memo, useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Button } from "flowbite-react";
 import sleep from "util/sleep";
-import useCurrentLink from "hooks/useCurrentLink";
+import useCurrentUrl from "hooks/useCurrentUrl";
 
 const CopyLink = memo(() => {
-  const [currentLink] = useCurrentLink();
+  const [currentLink] = useCurrentUrl();
 
   const [icon, setIcon] = useState(faCopy);
   const handleOnCopy = async () => {
