@@ -1,4 +1,5 @@
 import Layout from "@/core/layouts/Layout";
+import CopyLink from "@/rooms/components/CopyLink";
 import { GetServerSideProps, NextPage } from "next";
 import fetchData from "util/fetchData";
 
@@ -11,6 +12,7 @@ const ShowRoomPage: NextPage<InitialProps> = ({ room }) => {
     <Layout title={room.name}>
       <div>
         <h2 className="text-2xl font-bold">Welcome to "{room.name}" !</h2>
+        <CopyLink />
       </div>
     </Layout>
   );
