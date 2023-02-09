@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useCurrentLink = () => {
+const useCurrentUrl = () => {
   const [currentLink, setCurrentLink] = useState<string>('');
 
   useEffect(() => {
@@ -10,4 +10,4 @@ const useCurrentLink = () => {
   return [currentLink]
 }
 
-export default useCurrentLink
+export default useCurrentUrl
