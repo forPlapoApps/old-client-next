@@ -1,3 +1,4 @@
+import BackToRoomsButton from "@/core/components/BackToRoomsButton";
 import Layout from "@/core/layouts/Layout";
 import PlapoArena from "@/plapos/components/PlapoArena";
 import PlapoCalcurationResults from "@/plapos/components/PlapoCalcurationResults";
@@ -11,6 +12,7 @@ const PlapoPage: NextPage = () => {
         <PlapoArena />
         <PlapoCalcurationResults />
         <PlapoEventbuttons />
+        <BackToRoomsButton />
       </div>
     </Layout>
   )
