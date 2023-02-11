@@ -1,5 +1,5 @@
 import Layout from "@/core/layouts/Layout";
-import PlapoArena from "@/plapos/PlapoArena";
+import PlapoArena from "@/plapos/components/PlapoArena";
 import { NextPage } from "next";
 
 const PlapoPage: NextPage = () => {
