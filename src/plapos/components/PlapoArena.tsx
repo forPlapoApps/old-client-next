@@ -2,7 +2,7 @@ import PlapoCard from "./PlapoCard"
 
 const PlapoArena = () => {
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 mx-auto">
       <PlapoCard />
       <PlapoCard />
       <PlapoCard />

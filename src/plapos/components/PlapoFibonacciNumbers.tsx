@@ -14,7 +14,7 @@ const PlapoFibonacciNumbers = () => {
           htmlFor={score.toString()}
           onClick={() => handleClick(score)}
         >
-          <Button size="xl" className="w-16">
+          <Button size="xl" className="w-12">
             {score}
           </Button>
           <Radio
