@@ -13,11 +13,11 @@ const Layout = ({ title, children }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="container mx-auto">
-        <Navbar />
-        <div style={{ minHeight: "800px" }} className="px-4 flex flex-col gap-4">
-          {children}
+      <main className="container mx-auto h-screen flex flex-col">
+        <div className="flex-none">
+          <Navbar />
         </div>
+        <div className="px-4 flex flex-col gap-4 grow">{children}</div>
       </main>
     </>
   );
