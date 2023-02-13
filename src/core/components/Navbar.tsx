@@ -12,20 +12,12 @@ const Navbar = () => {
       </Link>
 
       <div className="flex md:order-2">
-        <div className="flex gap-2">
-          <Button color={"light"}>Register</Button>
-          <Button>Get started</Button>
-          <GoogleLoginButton />
-        </div>
+        <GoogleLoginButton />
         <FlowbiteNavbar.Toggle />
       </div>
       <FlowbiteNavbar.Collapse>
-        <Link href='/'>
-          Home
-        </Link>
-        <Link href='/rooms'>
-          Rooms
-        </Link>
+        <Link href="/">Home</Link>
+        <Link href="/rooms">Rooms</Link>
       </FlowbiteNavbar.Collapse>
     </FlowbiteNavbar>
   );
