@@ -1,5 +1,6 @@
 import { Button, Navbar as FlowbiteNavbar } from "flowbite-react";
 import Link from "next/link";
+import GoogleLoginButton from "./GoogleLoginButton";
 
 const Navbar = () => {
   return (
@@ -14,6 +15,7 @@ const Navbar = () => {
         <div className="flex gap-2">
           <Button color={"light"}>Register</Button>
           <Button>Get started</Button>
+          <GoogleLoginButton />
         </div>
         <FlowbiteNavbar.Toggle />
       </div>
