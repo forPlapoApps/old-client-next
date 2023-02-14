@@ -25,13 +25,14 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      if (user && user.displayName && user.email) {
-        const token = await user.getIdToken()
+      if (user) {
+        const token = await user.getIdToken();
         setCurrentUser({
-          name: user.displayName,
-          email: user.email,
+          name: user.displayName || "",
+          email: user.email || "",
           firebaseId: user.uid,
-          token
+          token,
+          imageUrl: user.photoURL || "",
         });
       } else {
         setCurrentUser(null);
