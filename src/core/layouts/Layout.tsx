@@ -6,9 +6,11 @@ import { AuthContext } from "context/auth";
 type Props = { title?: string; children?: React.ReactNode };
 
 const Layout = ({ title, children }: Props) => {
-  const { currentUser } = useContext(AuthContext)
+  const { currentUser, isSignedIn } = useContext(AuthContext)
 
   console.log(currentUser)
+  console.log(isSignedIn)
+
   return (
     <>
       <Head>
