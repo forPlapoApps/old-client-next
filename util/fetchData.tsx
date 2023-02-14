@@ -1,7 +1,8 @@
 import { ServerResponse } from "http";
+import $api from "lib/$api";
 
 const fetchData = async (path: string, resArg: ServerResponse) => {
-  const apiUrl = `${process.env.SERVER_URL}${path}`
+  const apiUrl = `${$api}${path}`
   try {
     const response = await fetch(apiUrl);
     resArg.statusCode = response.status
