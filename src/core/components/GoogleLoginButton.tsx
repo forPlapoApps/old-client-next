@@ -1,10 +1,10 @@
 import { signInWithPopup } from "firebase/auth";
 import { Button } from "flowbite-react";
 import { auth, provider } from "lib/firebase";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import ReactModal from "react-modal";
 import { FcGoogle } from "react-icons/fc";
+import createUser from "@/users/mutations/createUser";
 
 const customStyles = {
   content: {
@@ -14,16 +14,15 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    padding: '40px'
+    padding: "40px",
   },
   overlay: {
     background: "#424548",
+    opacity: '90%'
   },
 };
 
 const GoogleLoginButton = () => {
-  const [error, setError] = useState(null);
-  const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeModal = () => {
@@ -37,8 +36,12 @@ const GoogleLoginButton = () => {
   const handleLogin = async () => {
     try {
       signInWithPopup(auth, provider)
-        .then((userDetail) => {
-          console.log(userDetail);
+        .then(async ({ user }) => {
+          await createUser({
+            name: user.displayName,
+            email: user.email,
+            firebaseId: user.uid,
+          });
         })
         .catch((error) => {
           console.log(error);
@@ -55,6 +58,7 @@ const GoogleLoginButton = () => {
         isOpen={isModalOpen}
         style={customStyles}
         onRequestClose={closeModal}
+        ariaHideApp={false}
       >
         <div className="flex flex-col gap-8">
           <h2 className="text-2xl font-semibold">Welcome to forPlapoApps!!</h2>
