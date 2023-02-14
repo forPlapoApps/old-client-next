@@ -1,9 +1,14 @@
 import Head from "next/head";
 import Navbar from "../components/Navbar";
+import { useContext } from "react";
+import { AuthContext } from "context/auth";
 
 type Props = { title?: string; children?: React.ReactNode };
 
 const Layout = ({ title, children }: Props) => {
+  const { currentUser } = useContext(AuthContext)
+
+  console.log(currentUser)
   return (
     <>
       <Head>

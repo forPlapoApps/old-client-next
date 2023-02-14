@@ -1,10 +1,11 @@
 import { signInWithPopup } from "firebase/auth";
 import { Button } from "flowbite-react";
 import { auth, provider } from "lib/firebase";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ReactModal from "react-modal";
 import { FcGoogle } from "react-icons/fc";
 import createUser from "@/users/mutations/createUser";
+import { AuthContext } from "context/auth";
 
 const customStyles = {
   content: {
@@ -33,15 +34,19 @@ const GoogleLoginButton = () => {
     setIsModalOpen(true);
   };
 
+  const { setCurrentUser } = useContext(AuthContext)
+
   const handleLogin = async () => {
     try {
       signInWithPopup(auth, provider)
         .then(async ({ user }) => {
-          await createUser({
+          const userData = {
             name: user.displayName,
             email: user.email,
             firebaseId: user.uid,
-          });
+          }
+          await createUser(userData);
+          setCurrentUser(userData)
         })
         .catch((error) => {
           console.log(error);
