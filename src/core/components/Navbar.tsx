@@ -1,8 +1,13 @@
-import { Button, Navbar as FlowbiteNavbar } from "flowbite-react";
+import { Navbar as FlowbiteNavbar } from "flowbite-react";
 import Link from "next/link";
 import GoogleLoginButton from "./GoogleLoginButton";
+import { useContext } from "react";
+import { AuthContext } from "context/auth";
+import LogoutButton from "./LogoutButton";
 
 const Navbar = () => {
+  const { isSignedIn } = useContext(AuthContext);
+
   return (
     <FlowbiteNavbar fluid={true} rounded={true}>
       <Link href="/">
@@ -12,7 +17,7 @@ const Navbar = () => {
       </Link>
 
       <div className="flex md:order-2">
-        <GoogleLoginButton />
+        {isSignedIn ? <LogoutButton /> : <GoogleLoginButton />}
         <FlowbiteNavbar.Toggle />
       </div>
       <FlowbiteNavbar.Collapse>
