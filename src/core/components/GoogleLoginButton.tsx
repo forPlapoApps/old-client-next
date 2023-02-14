@@ -16,7 +16,6 @@ const customStyles = {
   },
   overlay: {
     background: "#424548",
-    opacity: "90%",
   },
 };
 
