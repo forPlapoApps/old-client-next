@@ -1,21 +1,10 @@
-import { signOut } from "firebase/auth";
 import { Button } from "flowbite-react";
-import { auth } from "lib/firebase";
-import { useRouter } from "next/router";
+import useAuth from "hooks/useAuth";
 
 const LogoutButton = () => {
-  const router = useRouter()
-  const Logout = () => {
-    signOut(auth)
-      .then(() => {
-        router.push('/')
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  const { logout } = useAuth();
 
-  return <Button onClick={Logout}>Logout</Button>;
+  return <Button onClick={logout}>Logout</Button>;
 };
 
 export default LogoutButton;

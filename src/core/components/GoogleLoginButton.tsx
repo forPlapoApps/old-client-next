@@ -1,11 +1,8 @@
-import { signInWithPopup } from "firebase/auth";
 import { Button } from "flowbite-react";
-import { auth, provider } from "lib/firebase";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import ReactModal from "react-modal";
 import { FcGoogle } from "react-icons/fc";
-import createUser from "@/users/mutations/createUser";
-import { AuthContext } from "context/auth";
+import useAuth from "hooks/useAuth";
 
 const customStyles = {
   content: {
@@ -19,11 +16,12 @@ const customStyles = {
   },
   overlay: {
     background: "#424548",
-    opacity: '90%'
+    opacity: "90%",
   },
 };
 
 const GoogleLoginButton = () => {
+  const { login } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeModal = () => {
@@ -32,30 +30,6 @@ const GoogleLoginButton = () => {
 
   const openModal = () => {
     setIsModalOpen(true);
-  };
-
-  const { setCurrentUser } = useContext(AuthContext)
-
-  const handleLogin = async () => {
-    try {
-      signInWithPopup(auth, provider)
-        .then(async ({ user }) => {
-          const token = await user.getIdToken()
-          const userData = {
-            name: user.displayName,
-            email: user.email,
-            firebaseId: user.uid,
-            token
-          }
-          await createUser(userData);
-          setCurrentUser(userData)
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (
@@ -70,7 +44,7 @@ const GoogleLoginButton = () => {
         <div className="flex flex-col gap-8">
           <h2 className="text-2xl font-semibold">Welcome to forPlapoApps!!</h2>
           <p>Register Your Account to use this app!</p>
-          <Button onClick={handleLogin} color={"light"} className="w-full">
+          <Button onClick={login} color={"light"} className="w-full">
             <div className="flex gap-2">
               <FcGoogle className="text-xl" />
               <p>Sign in with Google</p>
