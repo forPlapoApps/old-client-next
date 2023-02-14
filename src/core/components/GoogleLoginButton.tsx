@@ -40,10 +40,12 @@ const GoogleLoginButton = () => {
     try {
       signInWithPopup(auth, provider)
         .then(async ({ user }) => {
+          const token = await user.getIdToken()
           const userData = {
             name: user.displayName,
             email: user.email,
             firebaseId: user.uid,
+            token
           }
           await createUser(userData);
           setCurrentUser(userData)

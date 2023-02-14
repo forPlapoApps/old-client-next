@@ -2,8 +2,8 @@ import { auth } from "lib/firebase";
 import { FC, ReactNode, createContext, useEffect, useState } from "react";
 
 type AuthContextType = {
-  currentUser: User | null;
-  setCurrentUser: (user: User | null) => void;
+  currentUser: UserSession;
+  setCurrentUser: (user: UserSession) => void;
   isSignedIn: boolean;
 };
 
@@ -18,18 +18,20 @@ type AuthProviderProps = {
 };
 
 const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState<User | null | undefined>(
+  const [currentUser, setCurrentUser] = useState<UserSession | undefined>(
     undefined
   );
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      if (user && user.displayName && user.email) {
+        const token = await user.getIdToken()
         setCurrentUser({
           name: user.displayName,
           email: user.email,
           firebaseId: user.uid,
+          token
         });
       } else {
         setCurrentUser(null);
