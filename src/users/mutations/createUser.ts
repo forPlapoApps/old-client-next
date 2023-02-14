@@ -1,18 +1,17 @@
 import $api from "lib/$api";
 
-type dataType = {
-  name: string | null;
-  email: string | null;
-  firebaseId: string;
-};
+const createUser = async (userSession: UserSession) => {
+  if (!userSession) return 
 
-const createUser = async (data: dataType) => {
+  const { token, ...params } = userSession
+
   await fetch(`${$api}/users`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearder ${userSession.token}`
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(params),
   });
 };
 
